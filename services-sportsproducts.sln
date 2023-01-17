@@ -3,9 +3,47 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{2085DE47-0F71-4E2F-9747-9B825E7584CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{BA4B9B64-1E64-4CB5-9AAA-9B7EF121C9BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CF0D04E1-7CF1-45AA-8E16-1515473C68D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1F236BA6-B1D6-4EE4-93DD-455D9D005BCF}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sports.Data", "Source\Sports.Data\Sports.Data.csproj", "{D3C2BD67-CA24-4C7C-B71B-C873F92F4218}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sports.ApplicationCore", "Source\Sports.ApplicationCore\Sports.ApplicationCore.csproj", "{163A5CBD-7089-41C8-9296-7193349D3E1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{E636B71A-2625-46D6-8CD8-27D5BF3450DF}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3C2BD67-CA24-4C7C-B71B-C873F92F4218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C2BD67-CA24-4C7C-B71B-C873F92F4218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C2BD67-CA24-4C7C-B71B-C873F92F4218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C2BD67-CA24-4C7C-B71B-C873F92F4218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{163A5CBD-7089-41C8-9296-7193349D3E1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{163A5CBD-7089-41C8-9296-7193349D3E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{163A5CBD-7089-41C8-9296-7193349D3E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{163A5CBD-7089-41C8-9296-7193349D3E1D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3C2BD67-CA24-4C7C-B71B-C873F92F4218} = {BA4B9B64-1E64-4CB5-9AAA-9B7EF121C9BB}
+		{163A5CBD-7089-41C8-9296-7193349D3E1D} = {BA4B9B64-1E64-4CB5-9AAA-9B7EF121C9BB}
+		{E636B71A-2625-46D6-8CD8-27D5BF3450DF} = {2085DE47-0F71-4E2F-9747-9B825E7584CF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9CA43BF0-3E47-4622-9411-DDF00FEA12DF}
