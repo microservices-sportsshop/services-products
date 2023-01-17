@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Sports.Data.Entities;
 using Sports.Persistence;
 
 namespace Sports.API.Controllers
@@ -21,11 +20,19 @@ namespace Sports.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Product>> GetProducts()
+        public async Task<ActionResult> GetProducts()
         {
             _logger.LogInformation($"Starting ProductsController::GetProducts()");
 
-            return await _context.Products.ToListAsync();
+            return Ok(await _context.Products.ToListAsync());
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetProduct(Guid id)
+        {
+            var product = await _context.Products.FindAsync(id);
+
+            return (product is null) ? NotFound() : Ok(product);
         }
 
     }

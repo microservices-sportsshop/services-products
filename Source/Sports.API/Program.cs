@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using Sports.API.Extensions;
 using Sports.Persistence;
 
