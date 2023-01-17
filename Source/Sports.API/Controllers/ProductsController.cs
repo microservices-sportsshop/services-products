@@ -28,8 +28,10 @@ namespace Sports.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetProduct(Guid id)
+        public async Task<ActionResult> GetProductById(Guid id)
         {
+            _logger.LogInformation($"Starting ProductsController::GetProductById()");
+
             var product = await _context.Products.FindAsync(id);
 
             return (product is null) ? NotFound() : Ok(product);
