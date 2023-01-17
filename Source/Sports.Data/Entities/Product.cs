@@ -15,7 +15,7 @@ namespace Sports.Data.Entities
 
         public bool IsAvailable { get; set; }
 
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
 
         [JsonIgnore]
         public virtual Category? Category { get; set; }
