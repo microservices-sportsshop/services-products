@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sports.Dependencies\Sports.Dependencies.csproj" />
     <ProjectReference Include="..\Sports.Persistence\Sports.Persistence.csproj" />
   </ItemGroup>
 
