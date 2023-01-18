@@ -22,9 +22,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sports.ApplicationCore", "S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{E636B71A-2625-46D6-8CD8-27D5BF3450DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sports.API", "Source\Sports.API\Sports.API.csproj", "{72B26029-50E5-478E-8DF3-2278833D911E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sports.API", "Source\Sports.API\Sports.API.csproj", "{72B26029-50E5-478E-8DF3-2278833D911E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sports.Persistence", "Source\Sports.Persistence\Sports.Persistence.csproj", "{B53CB6BF-5BCE-4A23-A444-5259DFF2904F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sports.Persistence", "Source\Sports.Persistence\Sports.Persistence.csproj", "{B53CB6BF-5BCE-4A23-A444-5259DFF2904F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sports.Dependencies", "Source\Sports.Dependencies\Sports.Dependencies.csproj", "{15A75E0B-B957-4FE2-A535-FDB27314FD45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +50,10 @@ Global
 		{B53CB6BF-5BCE-4A23-A444-5259DFF2904F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B53CB6BF-5BCE-4A23-A444-5259DFF2904F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B53CB6BF-5BCE-4A23-A444-5259DFF2904F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15A75E0B-B957-4FE2-A535-FDB27314FD45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15A75E0B-B957-4FE2-A535-FDB27314FD45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15A75E0B-B957-4FE2-A535-FDB27314FD45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15A75E0B-B957-4FE2-A535-FDB27314FD45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{E636B71A-2625-46D6-8CD8-27D5BF3450DF} = {2085DE47-0F71-4E2F-9747-9B825E7584CF}
 		{72B26029-50E5-478E-8DF3-2278833D911E} = {BA4B9B64-1E64-4CB5-9AAA-9B7EF121C9BB}
 		{B53CB6BF-5BCE-4A23-A444-5259DFF2904F} = {BA4B9B64-1E64-4CB5-9AAA-9B7EF121C9BB}
+		{15A75E0B-B957-4FE2-A535-FDB27314FD45} = {BA4B9B64-1E64-4CB5-9AAA-9B7EF121C9BB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9CA43BF0-3E47-4622-9411-DDF00FEA12DF}
