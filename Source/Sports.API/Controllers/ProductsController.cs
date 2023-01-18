@@ -47,6 +47,33 @@ namespace Sports.API.Controllers
             return CreatedAtAction("GetProductById", new { id = product.Id }, product);
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult> ModifyProduct(Guid id, Product product)
+        {
+            if (id != product.Id)
+            {
+                return BadRequest();
+            }
+
+            if (!_context.Products.Any(p => p.Id == id))
+            {
+                return NotFound();
+            }
+
+            _context.Entry(product).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
+            }
+
+            return NoContent();
+        }
+
     }
 
 }
