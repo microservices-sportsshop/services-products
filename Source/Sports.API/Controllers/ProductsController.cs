@@ -33,9 +33,7 @@ namespace Sports.API.Controllers
         {
             _logger.LogInformation($"Starting ProductsController::GetProductById()");
 
-            var product = await _context.Products.FindAsync(id);
-
-            return (product is null) ? NotFound() : Ok(product);
+            return await _context.Products.FindAsync(id) is Product course ? Ok(course) : NotFound();
         }
 
         [HttpPost]
@@ -55,7 +53,7 @@ namespace Sports.API.Controllers
                 return BadRequest();
             }
 
-            if (!_context.Products.Any(p => p.Id == id))
+            if (!await _context.Products.AnyAsync(p => p.Id == id))
             {
                 return NotFound();
             }
@@ -72,6 +70,21 @@ namespace Sports.API.Controllers
             }
 
             return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteProduct(Guid id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+
+            return Ok(product);
         }
 
     }
