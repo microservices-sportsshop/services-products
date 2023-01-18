@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Sports.Data.Entities;
 using Sports.Persistence;
 
 namespace Sports.API.Controllers
@@ -35,6 +36,15 @@ namespace Sports.API.Controllers
             var product = await _context.Products.FindAsync(id);
 
             return (product is null) ? NotFound() : Ok(product);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddProduct([FromBody] Product product)
+        {
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetProductById", new { id = product.Id }, product);
         }
 
     }
