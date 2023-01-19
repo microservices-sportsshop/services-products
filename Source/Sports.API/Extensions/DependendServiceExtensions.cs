@@ -1,19 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Sports.Persistence;
-
-namespace Sports.API.Extensions
+﻿namespace Sports.API.Extensions
 {
 
-    public static class ThirdPartyServiceExtensions
+    public static class DependendServiceExtensions
     {
 
-        public static IServiceCollection AddThirdPartyServices(this IServiceCollection services)
+        public static IServiceCollection AddDependendServices(this IServiceCollection services)
         {
-            _ = services.AddDbContext<SportsShopDbContext>(options =>
-            {
-                _ = options.UseInMemoryDatabase("SportsShop");
-            });
-
             _ = services.AddControllers();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
