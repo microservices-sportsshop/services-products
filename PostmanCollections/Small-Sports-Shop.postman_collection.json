@@ -5,5 +5,48 @@
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "24752915"
 	},
-	"item": []
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "GET /api/Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostUrl}}/api/Products",
+							"host": [
+								"{{hostUrl}}"
+							],
+							"path": [
+								"api",
+								"Products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/Products/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostUrl}}/api/Products/62042340-8b07-45c7-8e93-70ea318ba501",
+							"host": [
+								"{{hostUrl}}"
+							],
+							"path": [
+								"api",
+								"Products",
+								"62042340-8b07-45c7-8e93-70ea318ba501"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
 }
