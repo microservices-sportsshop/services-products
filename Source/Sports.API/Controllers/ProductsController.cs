@@ -39,15 +39,19 @@ namespace Sports.API.Controllers
         [HttpPost]
         public async Task<ActionResult> AddProduct([FromBody] Product product)
         {
+            _logger.LogInformation($"Starting ProductsController::AddProduct()");
+
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProductById", new { id = product.Id }, product);
+            return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> ModifyProduct(Guid id, Product product)
+        public async Task<ActionResult> ModifyProductById(Guid id, Product product)
         {
+            _logger.LogInformation($"Starting ProductsController::ModifyProductById()");
+
             if (id != product.Id)
             {
                 return BadRequest();
@@ -73,8 +77,10 @@ namespace Sports.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteProduct(Guid id)
+        public async Task<ActionResult> DeleteProductById(Guid id)
         {
+            _logger.LogInformation($"Starting ProductsController::DeleteProductById()");
+
             var product = await _context.Products.FindAsync(id);
             if (product == null)
             {
@@ -91,6 +97,8 @@ namespace Sports.API.Controllers
         [Route("deleteproducts")]
         public async Task<ActionResult> DeleteProducts([FromQuery] Guid[] ids)
         {
+            _logger.LogInformation($"Starting ProductsController::DeleteProducts()");
+
             var products = new List<Product>();
             foreach (var id in ids)
             {
