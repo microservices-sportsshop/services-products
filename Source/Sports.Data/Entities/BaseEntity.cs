@@ -1,9 +1,13 @@
-﻿namespace Sports.Data.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Sports.Data.Entities
 {
 
     public class BaseEntity
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+
+        [Key]
+        public Guid Id { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
 
