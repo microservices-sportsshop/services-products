@@ -1,4 +1,6 @@
-﻿namespace Sports.API.Extensions
+﻿using Sports.Dependencies;
+
+namespace Sports.API.Extensions
 {
 
     public static class DependendServiceExtensions
@@ -16,6 +18,8 @@
             {
                 options.AddPolicy("AllowAll", policy => policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
             });
+
+            _ = services.AddApplicationServices();
 
             return services;
         }

@@ -1,11 +1,10 @@
 using Sports.API.Extensions;
-using Sports.Dependencies;
 using Sports.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDependendServices().AddApplicationServices();
+builder.Services.AddDependendServices();
 
 var app = builder.Build();
 
