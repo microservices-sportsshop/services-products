@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{BA4B9B64-1E64-4CB5-9AAA-9B7EF121C9BB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CF0D04E1-7CF1-45AA-8E16-1515473C68D0}"
+	ProjectSection(SolutionItems) = preProject
+		A.txt = A.txt
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1F236BA6-B1D6-4EE4-93DD-455D9D005BCF}"
 	ProjectSection(SolutionItems) = preProject
@@ -21,6 +24,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sports.ApplicationCore", "Source\Sports.ApplicationCore\Sports.ApplicationCore.csproj", "{163A5CBD-7089-41C8-9296-7193349D3E1D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{E636B71A-2625-46D6-8CD8-27D5BF3450DF}"
+	ProjectSection(SolutionItems) = preProject
+		B.txt = B.txt
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sports.API", "Source\Sports.API\Sports.API.csproj", "{72B26029-50E5-478E-8DF3-2278833D911E}"
 EndProject
