@@ -49,8 +49,8 @@ namespace Sports.Persistence.Extensions
                 new Product { Id = Guid.Parse("62042340-8b07-45c7-8e93-70ea318ba532"), CategoryId = Guid.Parse("62042340-8b07-45c7-8e93-70ea318ba415"), Name = "Vitamin B-Complex (100 caplets)", Sku = "SVB", Price = 12.99M, IsAvailable = true },
                 new Product { Id = Guid.Parse("62042340-8b07-45c7-8e93-70ea318ba533"), CategoryId = Guid.Parse("62042340-8b07-45c7-8e93-70ea318ba415"), Name = "Vitamin C 1000 mg (100 tablets)", Sku = "SVC", Price = 9.99M, IsAvailable = true },
                 new Product { Id = Guid.Parse("62042340-8b07-45c7-8e93-70ea318ba534"), CategoryId = Guid.Parse("62042340-8b07-45c7-8e93-70ea318ba415"), Name = "Vitamin D3 1000 IU (100 tablets)", Sku = "SVD3", Price = 12.49M, IsAvailable = true });
-
         }
 
     }
+
 }
