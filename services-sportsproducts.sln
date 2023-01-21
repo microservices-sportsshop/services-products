@@ -40,6 +40,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PostmanCollections", "Postm
 		PostmanCollections\Small-Sports-Shop.postman_collection.json = PostmanCollections\Small-Sports-Shop.postman_collection.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sports.Business", "Source\Sports.Business\Sports.Business.csproj", "{22677BAE-9E6B-4578-9CC4-47D2F6F31962}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sports.Configuration", "Source\Sports.Configuration\Sports.Configuration.csproj", "{31B76706-D343-4576-9828-0A72B89945FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +70,14 @@ Global
 		{15A75E0B-B957-4FE2-A535-FDB27314FD45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15A75E0B-B957-4FE2-A535-FDB27314FD45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15A75E0B-B957-4FE2-A535-FDB27314FD45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22677BAE-9E6B-4578-9CC4-47D2F6F31962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22677BAE-9E6B-4578-9CC4-47D2F6F31962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22677BAE-9E6B-4578-9CC4-47D2F6F31962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22677BAE-9E6B-4578-9CC4-47D2F6F31962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31B76706-D343-4576-9828-0A72B89945FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31B76706-D343-4576-9828-0A72B89945FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31B76706-D343-4576-9828-0A72B89945FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31B76706-D343-4576-9828-0A72B89945FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +89,8 @@ Global
 		{72B26029-50E5-478E-8DF3-2278833D911E} = {BA4B9B64-1E64-4CB5-9AAA-9B7EF121C9BB}
 		{B53CB6BF-5BCE-4A23-A444-5259DFF2904F} = {BA4B9B64-1E64-4CB5-9AAA-9B7EF121C9BB}
 		{15A75E0B-B957-4FE2-A535-FDB27314FD45} = {BA4B9B64-1E64-4CB5-9AAA-9B7EF121C9BB}
+		{22677BAE-9E6B-4578-9CC4-47D2F6F31962} = {BA4B9B64-1E64-4CB5-9AAA-9B7EF121C9BB}
+		{31B76706-D343-4576-9828-0A72B89945FA} = {BA4B9B64-1E64-4CB5-9AAA-9B7EF121C9BB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9CA43BF0-3E47-4622-9411-DDF00FEA12DF}
