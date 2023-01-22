@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Sports.ApplicationCore.Interfaces;
+using Sports.Data.Dtos;
 using Sports.Data.Entities;
 using Sports.Persistence;
 
@@ -42,7 +43,7 @@ namespace Sports.API.Controllers
         {
             _logger.LogInformation($"Starting ProductsController::GetProductById()");
 
-            return await _sportsShopDbContext.Products.FindAsync(id) is Product course ? Ok(course) : NotFound();
+            return await _productsBusiness.GetProductById(id) is ProductViewDto product ? Ok(product) : NotFound();
         }
 
         [HttpPost]

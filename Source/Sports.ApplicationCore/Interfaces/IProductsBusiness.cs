@@ -7,11 +7,9 @@ namespace Sports.ApplicationCore.Interfaces
     {
         Task<IEnumerable<ProductViewDto>> GetProducts();
 
-        // Task<IEnumerable<CourseDto>> GetAllCourses();
+        Task<ProductViewDto?> GetProductById(Guid id);
 
         //Task<CourseDto> AddCourse(CourseDto courseDto);
-
-        //Task<CourseDto?> GetCourseById(Guid Id);
 
         //Task<CourseDto?> UpdateCourseById(Guid Id, CourseDto courseDto);
 

@@ -25,6 +25,12 @@ namespace Sports.Repositories
             return await _sportsShopDbContext.Products.ToListAsync();
         }
 
+        public async Task<Product?> GetProductById(Guid id)
+        {
+            _logger.LogInformation($"Starting ProductsRepository::GetProductById()");
+
+            return await _sportsShopDbContext.Products.FindAsync(id) is Product product ? product : default;
+        }
     }
 
 }

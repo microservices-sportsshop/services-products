@@ -29,6 +29,15 @@ namespace Sports.Business
             return _mapper.Map<List<ProductViewDto>>(products);
         }
 
+        public async Task<ProductViewDto?> GetProductById(Guid id)
+        {
+            _logger.LogInformation($"Starting ProductsBusiness::GetProductById()");
+
+            var product = await _productsRepository.GetProductById(id);
+
+            return _mapper.Map<ProductViewDto>(product);
+        }
+
     }
 
 }
