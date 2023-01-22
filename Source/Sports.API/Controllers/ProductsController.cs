@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Sports.ApplicationCore.Interfaces;
 using Sports.Data.Entities;
 using Sports.Persistence;
 
@@ -10,23 +11,27 @@ namespace Sports.API.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly SportsShopDbContext _context;
+        private readonly SportsShopDbContext _sportsShopDbContext;
+        private readonly IProductsBusiness _productsBusiness;
         private readonly ILogger<ProductsController> _logger;
 
-        public ProductsController(SportsShopDbContext context, ILogger<ProductsController> logger)
+        public ProductsController(SportsShopDbContext sportsShopDbContext, IProductsBusiness productsBusiness, ILogger<ProductsController> logger)
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _sportsShopDbContext = sportsShopDbContext ?? throw new ArgumentNullException(nameof(sportsShopDbContext));
+
+            _productsBusiness = productsBusiness ?? throw new ArgumentNullException(nameof(productsBusiness));
 
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Product>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetProducts()
         {
             _logger.LogInformation($"Starting ProductsController::GetProducts()");
 
-            return Ok(await _context.Products.ToListAsync());
+            return Ok(await _productsBusiness.GetProducts());
         }
 
         [HttpGet("{id}")]
@@ -37,7 +42,7 @@ namespace Sports.API.Controllers
         {
             _logger.LogInformation($"Starting ProductsController::GetProductById()");
 
-            return await _context.Products.FindAsync(id) is Product course ? Ok(course) : NotFound();
+            return await _sportsShopDbContext.Products.FindAsync(id) is Product course ? Ok(course) : NotFound();
         }
 
         [HttpPost]
@@ -47,8 +52,8 @@ namespace Sports.API.Controllers
         {
             _logger.LogInformation($"Starting ProductsController::AddProduct()");
 
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
+            _sportsShopDbContext.Products.Add(product);
+            await _sportsShopDbContext.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
         }
@@ -67,16 +72,16 @@ namespace Sports.API.Controllers
                 return BadRequest();
             }
 
-            if (!await _context.Products.AnyAsync(p => p.Id == id))
+            if (!await _sportsShopDbContext.Products.AnyAsync(p => p.Id == id))
             {
                 return NotFound();
             }
 
-            _context.Entry(product).State = EntityState.Modified;
+            _sportsShopDbContext.Entry(product).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _sportsShopDbContext.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -94,14 +99,14 @@ namespace Sports.API.Controllers
         {
             _logger.LogInformation($"Starting ProductsController::DeleteProductById()");
 
-            var product = await _context.Products.FindAsync(id);
+            var product = await _sportsShopDbContext.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
             }
 
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
+            _sportsShopDbContext.Products.Remove(product);
+            await _sportsShopDbContext.SaveChangesAsync();
 
             return Ok(product);
         }
@@ -118,7 +123,7 @@ namespace Sports.API.Controllers
             var products = new List<Product>();
             foreach (var id in ids)
             {
-                var product = await _context.Products.FindAsync(id);
+                var product = await _sportsShopDbContext.Products.FindAsync(id);
 
                 if (product == null)
                 {
@@ -128,8 +133,8 @@ namespace Sports.API.Controllers
                 products.Add(product);
             }
 
-            _context.Products.RemoveRange(products);
-            await _context.SaveChangesAsync();
+            _sportsShopDbContext.Products.RemoveRange(products);
+            await _sportsShopDbContext.SaveChangesAsync();
 
             return Ok(products);
         }

@@ -8,12 +8,12 @@ namespace Sports.Repositories
 {
     public class ProductsRepository : IProductsRepository
     {
-        private readonly SportsShopDbContext _context;
+        private readonly SportsShopDbContext _sportsShopDbContext;
         private readonly ILogger<ProductsRepository> _logger;
 
         public ProductsRepository(SportsShopDbContext context, ILogger<ProductsRepository> logger)
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _sportsShopDbContext = context ?? throw new ArgumentNullException(nameof(context));
 
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
@@ -22,7 +22,7 @@ namespace Sports.Repositories
         {
             _logger.LogInformation($"Starting ProductsRepository::GetProducts()");
 
-            return await _context.Products.ToListAsync();
+            return await _sportsShopDbContext.Products.ToListAsync();
         }
 
     }
