@@ -11,7 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sports.ApplicationCore\Sports.ApplicationCore.csproj" />
+    <ProjectReference Include="..\Sports.Business\Sports.Business.csproj" />
+    <ProjectReference Include="..\Sports.Configuration\Sports.Configuration.csproj" />
     <ProjectReference Include="..\Sports.Persistence\Sports.Persistence.csproj" />
+    <ProjectReference Include="..\Sports.Repositories\Sports.Repositories.csproj" />
   </ItemGroup>
   
 </Project>

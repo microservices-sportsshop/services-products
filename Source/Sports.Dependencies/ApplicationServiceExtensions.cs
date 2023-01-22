@@ -1,9 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Sports.ApplicationCore.Interfaces;
+using Sports.Business;
+using Sports.Configuration;
 using Sports.Persistence;
+using Sports.Repositories;
 
 namespace Sports.Dependencies
 {
+
     public static class ApplicationServiceExtensions
     {
 
@@ -14,9 +19,11 @@ namespace Sports.Dependencies
                 _ = options.UseInMemoryDatabase("SportsShop");
             });
 
-            //_ = services.AddScoped<ICoursesBusiness, CoursesBusiness>();
+            _ = services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
-            //_ = services.AddScoped<ICoursesRepository, CoursesRepository>();
+            _ = services.AddScoped<IProductsBusiness, ProductsBusiness>();
+
+            _ = services.AddScoped<IProductsRepository, ProductsRepository>();
 
             return services;
         }
