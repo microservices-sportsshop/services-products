@@ -21,7 +21,8 @@ namespace Sports.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetProducts()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Product>))]
+        public async Task<IActionResult> GetProducts()
         {
             _logger.LogInformation($"Starting ProductsController::GetProducts()");
 
@@ -29,7 +30,10 @@ namespace Sports.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetProductById(Guid id)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Product))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetProductById(Guid id)
         {
             _logger.LogInformation($"Starting ProductsController::GetProductById()");
 
@@ -37,7 +41,9 @@ namespace Sports.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddProduct([FromBody] Product product)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Product))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> AddProduct([FromBody] Product product)
         {
             _logger.LogInformation($"Starting ProductsController::AddProduct()");
 
@@ -48,7 +54,11 @@ namespace Sports.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> ModifyProductById(Guid id, Product product)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Product))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ModifyProductById(Guid id, Product product)
         {
             _logger.LogInformation($"Starting ProductsController::ModifyProductById()");
 
@@ -77,7 +87,10 @@ namespace Sports.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteProductById(Guid id)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Product))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeleteProductById(Guid id)
         {
             _logger.LogInformation($"Starting ProductsController::DeleteProductById()");
 
@@ -95,7 +108,10 @@ namespace Sports.API.Controllers
 
         [HttpPost]
         [Route("deleteproducts")]
-        public async Task<ActionResult> DeleteProducts([FromQuery] Guid[] ids)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Product>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeleteProducts([FromQuery] Guid[] ids)
         {
             _logger.LogInformation($"Starting ProductsController::DeleteProducts()");
 
