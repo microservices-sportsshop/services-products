@@ -31,6 +31,17 @@ namespace Sports.Repositories
 
             return await _sportsShopDbContext.Products.FindAsync(id) is Product product ? product : default;
         }
+
+        public async Task<Product> AddProduct(Product product)
+        {
+            _logger.LogInformation($"Starting ProductsRepository::AddProduct()");
+
+            _sportsShopDbContext.Products.Add(product);
+            await _sportsShopDbContext.SaveChangesAsync();
+
+            return product;
+        }
+
     }
 
 }
