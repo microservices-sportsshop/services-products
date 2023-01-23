@@ -1,6 +1,4 @@
-﻿using Sports.Data.Entities;
-
-namespace Sports.Data.Dtos
+﻿namespace Sports.Data.Dtos
 {
 
     public record ProductAddDto
@@ -16,8 +14,6 @@ namespace Sports.Data.Dtos
         public bool IsAvailable { get; set; }
 
         public Guid CategoryId { get; set; }
-
-        public Category? Category { get; set; }
     }
 
 }

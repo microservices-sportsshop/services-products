@@ -49,12 +49,11 @@ namespace Sports.API.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Product))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AddProduct([FromBody] Product product)
+        public async Task<IActionResult> AddProduct([FromBody] ProductAddDto productAddDto)
         {
             _logger.LogInformation($"Starting ProductsController::AddProduct()");
 
-            _sportsShopDbContext.Products.Add(product);
-            await _sportsShopDbContext.SaveChangesAsync();
+            var product = await _productsBusiness.AddProduct(productAddDto);
 
             return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
         }
