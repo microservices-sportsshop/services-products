@@ -3,7 +3,7 @@
 namespace Sports.Data.Dtos
 {
 
-    public record ProductDto
+    public record ProductViewDto
     {
         public Guid Id { get; set; }
 
