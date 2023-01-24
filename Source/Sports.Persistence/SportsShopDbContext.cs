@@ -14,7 +14,7 @@ namespace Sports.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>()
+            _ = modelBuilder.Entity<Category>()
                 .HasMany(c => c.Products)
                 .WithOne(a => a.Category)
                 .HasForeignKey(a => a.CategoryId);
@@ -22,9 +22,9 @@ namespace Sports.Persistence
             modelBuilder.Seed();
         }
 
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products => Set<Product>();
 
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Category> Categories => Set<Category>();
     }
 
 }
