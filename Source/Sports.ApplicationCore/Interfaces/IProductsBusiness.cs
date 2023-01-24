@@ -1,4 +1,5 @@
 ﻿using Sports.Data.Dtos;
+using Sports.Data.Entities;
 
 namespace Sports.ApplicationCore.Interfaces
 {
@@ -9,7 +10,7 @@ namespace Sports.ApplicationCore.Interfaces
 
         Task<ProductViewDto?> GetProductById(Guid id);
 
-        //Task<CourseDto> AddCourse(CourseDto courseDto);
+        Task<Product> AddProduct(ProductAddDto productAddDto);
 
         //Task<CourseDto?> UpdateCourseById(Guid Id, CourseDto courseDto);
 

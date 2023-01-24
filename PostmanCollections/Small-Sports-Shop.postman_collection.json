@@ -28,6 +28,33 @@
 					"response": []
 				},
 				{
+					"name": "POST /api/Products",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sku\": \"AWMGSJ - 1\",\r\n    \"name\": \"Grunge Skater Jeans - 1\",\r\n    \"description\": \"Grunge Skater Jeans - Description\",\r\n    \"price\": 69,\r\n    \"isAvailable\": true,\r\n    \"categoryId\": \"62042340-8b07-45c7-8e93-70ea318ba411\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostUrl}}/api/Products",
+							"host": [
+								"{{hostUrl}}"
+							],
+							"path": [
+								"api",
+								"Products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "GET /api/Products/{id}",
 					"request": {
 						"method": "GET",

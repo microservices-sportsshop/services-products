@@ -10,6 +10,8 @@ namespace Sports.Configuration
         public AutoMapperProfiles()
         {
             _ = CreateMap<Product, ProductViewDto>().ReverseMap();
+
+            _ = CreateMap<ProductAddDto, Product>().ReverseMap();
         }
     }
 

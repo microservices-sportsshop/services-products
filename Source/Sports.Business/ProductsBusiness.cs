@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Sports.ApplicationCore.Interfaces;
 using Sports.Data.Dtos;
+using Sports.Data.Entities;
 
 namespace Sports.Business
 {
@@ -36,6 +37,15 @@ namespace Sports.Business
             var product = await _productsRepository.GetProductById(id);
 
             return _mapper.Map<ProductViewDto>(product);
+        }
+
+        public async Task<Product> AddProduct(ProductAddDto productAddDto)
+        {
+            _logger.LogInformation($"Starting ProductsBusiness::AddProduct()");
+
+            var product = await _productsRepository.AddProduct(_mapper.Map<Product>(productAddDto));
+
+            return product;
         }
 
     }
