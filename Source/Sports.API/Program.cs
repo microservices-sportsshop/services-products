@@ -11,20 +11,3 @@ var app = builder.Build();
 app.ConfigureHttpRequestPipeline();
 
 app.Run();
-
-
-//if (app.Environment.IsDevelopment())
-//{
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
-
-//    using var scope = app.Services.CreateScope();
-//    using var context = scope.ServiceProvider.GetService<SportsShopDbContext>();
-//    _ = (context?.Database.EnsureCreated());
-//}
-
-//app.UseHttpsRedirection();
-
-//app.UseAuthorization();
-
-//app.MapControllers();
