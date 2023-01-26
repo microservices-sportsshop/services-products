@@ -48,6 +48,15 @@ namespace Sports.Business
             return product;
         }
 
+        public async Task<Product?> UpdateProductById(Guid id, ProductEditDto productEditDto)
+        {
+            _logger.LogInformation($"Starting ProductsBusiness::UpdateProductById()");
+
+            var product = await _productsRepository.UpdateProductById(id, _mapper.Map<Product>(productEditDto));
+
+            return product;
+        }
+
     }
 
 }
