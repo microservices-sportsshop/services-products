@@ -15,8 +15,9 @@ namespace Sports.Configuration
             _ = CreateMap<ProductAddDto, Product>().ReverseMap();
 
             _ = CreateMap<ProductUpdateDto, Product>()
-                .ForMember(x => x.CreatedDate, opt => opt.Ignore())
-                .ForMember(x => x.CreatedBy, opt => opt.Ignore());
+                .ForMember(dest => dest.CreatedDate, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedBy, opt => opt.UseDestinationValue())
+                .ReverseMap();
         }
 
     }

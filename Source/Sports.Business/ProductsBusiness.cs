@@ -52,7 +52,7 @@ namespace Sports.Business
         {
             _logger.LogInformation($"Starting ProductsBusiness::UpdateProductById()");
 
-            var product = await _productsRepository.UpdateProductById(id, _mapper.Map<Product>(productUpdateDto));
+            var product = await _productsRepository.UpdateProductById(id, productUpdateDto);
 
             return product;
         }
