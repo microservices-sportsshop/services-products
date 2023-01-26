@@ -48,7 +48,7 @@ namespace Sports.Business
             return product;
         }
 
-        public async Task<Product?> UpdateProductById(Guid id, ProductEditDto productEditDto)
+        public async Task<Product?> UpdateProductById(Guid id, ProductUpdateDto productEditDto)
         {
             _logger.LogInformation($"Starting ProductsBusiness::UpdateProductById()");
 

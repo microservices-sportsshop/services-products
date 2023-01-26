@@ -62,7 +62,7 @@ namespace Sports.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> ModifyProductById(Guid id, ProductEditDto productEditDto)
+        public async Task<IActionResult> ModifyProductById(Guid id, ProductUpdateDto productEditDto)
         {
             _logger.LogInformation($"Starting ProductsController::ModifyProductById()");
 

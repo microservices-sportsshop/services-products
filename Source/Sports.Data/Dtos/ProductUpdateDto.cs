@@ -2,7 +2,7 @@
 
 namespace Sports.Data.Dtos
 {
-    public record ProductEditDto : ProductAddDto
+    public record ProductUpdateDto : ProductAddDto
     {
         [Required]
         public Guid Id { get; set; }
