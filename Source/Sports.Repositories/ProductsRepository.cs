@@ -42,6 +42,21 @@ namespace Sports.Repositories
             return product;
         }
 
+        public async Task<Product?> UpdateProductById(Guid id, Product product)
+        {
+            _logger.LogInformation($"Starting ProductsRepository::UpdateProductById()");
+
+            if (!await _sportsShopDbContext.Products.AnyAsync(p => p.Id == id))
+            {
+                return default;
+            }
+
+            _sportsShopDbContext.Entry(product).State = EntityState.Modified;
+            _ = await _sportsShopDbContext.SaveChangesAsync();
+
+            return product;
+        }
+
     }
 
 }
