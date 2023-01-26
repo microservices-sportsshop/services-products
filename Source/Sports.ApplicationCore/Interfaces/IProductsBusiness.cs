@@ -12,7 +12,7 @@ namespace Sports.ApplicationCore.Interfaces
 
         Task<Product> AddProduct(ProductAddDto productAddDto);
 
-        Task<Product?> UpdateProductById(Guid id, ProductUpdateDto productEditDto);
+        Task<Product?> UpdateProductById(Guid id, ProductUpdateDto productUpdateDto);
 
         //Task<CourseDto?> DeleteCourseById(Guid id);
     }
