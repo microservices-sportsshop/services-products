@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Sports.ApplicationCore.Interfaces;
 using Sports.Data.Dtos;
 using Sports.Data.Entities;
@@ -63,29 +62,20 @@ namespace Sports.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> ModifyProductById(Guid id, Product product)
+        public async Task<IActionResult> ModifyProductById(Guid id, ProductUpdateDto productUpdateDto)
         {
             _logger.LogInformation($"Starting ProductsController::ModifyProductById()");
 
-            if (id != product.Id)
+            if (id != productUpdateDto.Id)
             {
                 return BadRequest();
             }
 
-            if (!await _sportsShopDbContext.Products.AnyAsync(p => p.Id == id))
+            var product = await _productsBusiness.UpdateProductById(id, productUpdateDto);
+
+            if (product is null)
             {
                 return NotFound();
-            }
-
-            _sportsShopDbContext.Entry(product).State = EntityState.Modified;
-
-            try
-            {
-                await _sportsShopDbContext.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                throw;
             }
 
             return NoContent();

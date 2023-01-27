@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Sports.ApplicationCore.Interfaces;
+using Sports.Data.Dtos;
 using Sports.Data.Entities;
 using Sports.Persistence;
 
@@ -9,11 +11,14 @@ namespace Sports.Repositories
     public class ProductsRepository : IProductsRepository
     {
         private readonly SportsShopDbContext _sportsShopDbContext;
+        private readonly IMapper _mapper;
         private readonly ILogger<ProductsRepository> _logger;
 
-        public ProductsRepository(SportsShopDbContext context, ILogger<ProductsRepository> logger)
+        public ProductsRepository(SportsShopDbContext sportsShopDbContext, IMapper mapper, ILogger<ProductsRepository> logger)
         {
-            _sportsShopDbContext = context ?? throw new ArgumentNullException(nameof(context));
+            _sportsShopDbContext = sportsShopDbContext ?? throw new ArgumentNullException(nameof(sportsShopDbContext));
+
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
@@ -38,6 +43,25 @@ namespace Sports.Repositories
 
             _sportsShopDbContext.Products.Add(product);
             await _sportsShopDbContext.SaveChangesAsync();
+
+            return product;
+        }
+
+        public async Task<Product?> UpdateProductById(Guid id, ProductUpdateDto productUpdateDto)
+        {
+            _logger.LogInformation($"Starting ProductsRepository::UpdateProductById()");
+
+            var product = await _sportsShopDbContext.Products.FindAsync(id);
+
+            if (product is null)
+            {
+                return product;
+            }
+
+            product = _mapper.Map<ProductUpdateDto, Product>(productUpdateDto);
+
+            _sportsShopDbContext.Entry(product).State = EntityState.Modified;
+            _ = await _sportsShopDbContext.SaveChangesAsync();
 
             return product;
         }
