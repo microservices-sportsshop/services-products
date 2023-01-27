@@ -58,7 +58,12 @@ namespace Sports.Repositories
                 return product;
             }
 
-            product = _mapper.Map<ProductUpdateDto, Product>(productUpdateDto);
+            _sportsShopDbContext.Entry(product).State = EntityState.Detached;
+
+            productUpdateDto.CreatedBy = product.CreatedBy;
+            productUpdateDto.CreatedDate = product.CreatedDate;
+
+            product = _mapper.Map<Product>(productUpdateDto);
 
             _sportsShopDbContext.Entry(product).State = EntityState.Modified;
             _ = await _sportsShopDbContext.SaveChangesAsync();
