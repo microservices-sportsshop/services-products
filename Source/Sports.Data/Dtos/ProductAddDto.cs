@@ -22,6 +22,10 @@ namespace Sports.Data.Dtos
         public string? CreatedBy { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+
+        public string? ModifiedBy => CreatedBy;
+
+        public DateTime ModifiedDate => CreatedDate;
     }
 
 }
