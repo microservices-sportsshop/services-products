@@ -18,10 +18,13 @@ namespace Sports.Data.Dtos
 
         public Guid CategoryId { get; set; }
 
-        [Required]
         public string? CreatedBy { get; set; }
 
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedDate { get; set; }
+
+        public string? ModifiedBy { get; set; }
+
+        public DateTime ModifiedDate { get; set; }
     }
 
 }
