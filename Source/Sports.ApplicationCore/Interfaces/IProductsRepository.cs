@@ -1,18 +1,17 @@
 ﻿using Sports.Data.Dtos;
-using Sports.Data.Entities;
 
 namespace Sports.ApplicationCore.Interfaces
 {
 
     public interface IProductsRepository
     {
-        Task<IEnumerable<Product>> GetProducts();
+        Task<IEnumerable<ProductViewDto>> GetProducts();
 
-        Task<Product?> GetProductById(Guid id);
+        Task<ProductViewDto?> GetProductById(Guid id);
 
-        Task<Product> AddProduct(Product product);
+        Task<ProductViewDto> AddProduct(ProductAddDto productAddDto);
 
-        Task<Product?> UpdateProductById(Guid id, ProductUpdateDto productUpdateDto);
+        Task<ProductViewDto?> UpdateProductById(Guid id, ProductUpdateDto productUpdateDto);
 
         //Task<CourseDto?> DeleteCourseById(Guid id);
     }
