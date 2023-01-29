@@ -41,6 +41,11 @@ namespace Sports.Repositories
         {
             _logger.LogInformation($"Starting ProductsRepository::AddProduct()");
 
+            //productUpdateDto.CreatedBy = product.CreatedBy;
+            //productUpdateDto.CreatedDate = product.CreatedDate;
+            //productUpdateDto.ModifiedDate = DateTime.UtcNow;
+            // TODO: Modified by should come from Identity Service
+
             _sportsShopDbContext.Products.Add(product);
             await _sportsShopDbContext.SaveChangesAsync();
 
@@ -55,13 +60,15 @@ namespace Sports.Repositories
 
             if (product is null)
             {
-                return product;
+                return default;
             }
 
             _sportsShopDbContext.Entry(product).State = EntityState.Detached;
 
             productUpdateDto.CreatedBy = product.CreatedBy;
             productUpdateDto.CreatedDate = product.CreatedDate;
+            productUpdateDto.ModifiedDate = DateTime.UtcNow;
+            // TODO: Modified by should come from Identity Service
 
             product = _mapper.Map<Product>(productUpdateDto);
 
