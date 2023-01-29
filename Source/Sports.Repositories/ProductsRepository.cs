@@ -70,7 +70,7 @@ namespace Sports.Repositories
 
             productUpdateDto.CreatedBy = product.CreatedBy;
             productUpdateDto.CreatedDate = product.CreatedDate;
-            
+
             productUpdateDto.ModifiedDate = DateTime.UtcNow;
             // TODO: ModifiedBy should come from Identity Service
             productUpdateDto.ModifiedBy = "Some Identity User";
