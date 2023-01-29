@@ -56,7 +56,7 @@ namespace Sports.API.Controllers
 
             var apiResponseDto = await _productsBusiness.AddProduct(productAddDto);
 
-            return CreatedAtAction(nameof(GetProductById), new { id = apiResponseDto.Data.Id }, apiResponseDto);
+            return CreatedAtAction(nameof(GetProductById), new { id = apiResponseDto?.Data?.Id }, apiResponseDto);
         }
 
         [HttpPut("{id}")]
