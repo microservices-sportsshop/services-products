@@ -42,7 +42,9 @@ namespace Sports.API.Controllers
         {
             _logger.LogInformation($"Starting ProductsController::GetProductById()");
 
-            return await _productsBusiness.GetProductById(id) is ProductViewDto product ? Ok(product) : NotFound();
+            return await _productsBusiness.GetProductById(id)
+                is ApiResponseDto<ProductViewDto?> apiResponseDto && (apiResponseDto.Data is not null)
+                ? Ok(apiResponseDto) : NotFound();
         }
 
         [HttpPost]
@@ -52,9 +54,9 @@ namespace Sports.API.Controllers
         {
             _logger.LogInformation($"Starting ProductsController::AddProduct()");
 
-            var product = await _productsBusiness.AddProduct(productAddDto);
+            var apiResponseDto = await _productsBusiness.AddProduct(productAddDto);
 
-            return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
+            return CreatedAtAction(nameof(GetProductById), new { id = apiResponseDto.Data.Id }, apiResponseDto);
         }
 
         [HttpPut("{id}")]
@@ -71,9 +73,9 @@ namespace Sports.API.Controllers
                 return BadRequest();
             }
 
-            var product = await _productsBusiness.UpdateProductById(id, productUpdateDto);
+            var apiResponseDto = await _productsBusiness.UpdateProductById(id, productUpdateDto);
 
-            if (product is null)
+            if (apiResponseDto.Data is null)
             {
                 return NotFound();
             }
