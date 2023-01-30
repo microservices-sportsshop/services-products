@@ -14,6 +14,8 @@ namespace Sports.Configuration
 
             _ = CreateMap<ProductAddDto, Product>().ReverseMap();
 
+            _ = CreateMap<ProductAddDto, ProductViewDto>().ReverseMap();
+
             _ = CreateMap<ProductUpdateDto, Product>().ReverseMap();
         }
 

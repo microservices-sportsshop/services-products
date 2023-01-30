@@ -23,31 +23,39 @@ namespace Sports.Repositories
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public async Task<IEnumerable<Product>> GetProducts()
+        public async Task<IEnumerable<ProductViewDto>> GetProducts()
         {
             _logger.LogInformation($"Starting ProductsRepository::GetProducts()");
 
-            return await _sportsShopDbContext.Products.ToListAsync();
+            return _mapper.Map<IEnumerable<ProductViewDto>>(
+                await _sportsShopDbContext.Products.ToListAsync()
+                );
         }
 
-        public async Task<Product?> GetProductById(Guid id)
+        public async Task<ProductViewDto?> GetProductById(Guid id)
         {
             _logger.LogInformation($"Starting ProductsRepository::GetProductById()");
 
-            return await _sportsShopDbContext.Products.FindAsync(id) is Product product ? product : default;
+            return await _sportsShopDbContext.Products.FindAsync(id) is Product product
+                ? _mapper.Map<ProductViewDto>(product)
+                : default;
         }
 
-        public async Task<Product> AddProduct(Product product)
+        public async Task<ProductViewDto> AddProduct(ProductAddDto productAddDto)
         {
             _logger.LogInformation($"Starting ProductsRepository::AddProduct()");
 
-            _sportsShopDbContext.Products.Add(product);
+            productAddDto.CreatedDate = productAddDto.ModifiedDate = DateTime.UtcNow;
+            // TODO: Modified by should come from Identity Service
+            productAddDto.CreatedBy = productAddDto.ModifiedBy = "Some Identity User";
+
+            _sportsShopDbContext.Products.Add(_mapper.Map<Product>(productAddDto));
             await _sportsShopDbContext.SaveChangesAsync();
 
-            return product;
+            return _mapper.Map<ProductViewDto>(productAddDto);
         }
 
-        public async Task<Product?> UpdateProductById(Guid id, ProductUpdateDto productUpdateDto)
+        public async Task<ProductViewDto?> UpdateProductById(Guid id, ProductUpdateDto productUpdateDto)
         {
             _logger.LogInformation($"Starting ProductsRepository::UpdateProductById()");
 
@@ -55,7 +63,7 @@ namespace Sports.Repositories
 
             if (product is null)
             {
-                return product;
+                return default;
             }
 
             _sportsShopDbContext.Entry(product).State = EntityState.Detached;
@@ -63,12 +71,16 @@ namespace Sports.Repositories
             productUpdateDto.CreatedBy = product.CreatedBy;
             productUpdateDto.CreatedDate = product.CreatedDate;
 
+            productUpdateDto.ModifiedDate = DateTime.UtcNow;
+            // TODO: ModifiedBy should come from Identity Service
+            productUpdateDto.ModifiedBy = "Some Identity User";
+
             product = _mapper.Map<Product>(productUpdateDto);
 
             _sportsShopDbContext.Entry(product).State = EntityState.Modified;
             _ = await _sportsShopDbContext.SaveChangesAsync();
 
-            return product;
+            return _mapper.Map<ProductViewDto>(product);
         }
 
     }
